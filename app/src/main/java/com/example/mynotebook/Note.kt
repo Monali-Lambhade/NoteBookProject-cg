@@ -1,19 +1,15 @@
 package com.example.mynotebook
 
 
-import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
-import java.sql.Timestamp
 
 
 @Entity(tableName ="notesTable" )
-class Note (@ColumnInfo(name = "title")val noteTitle:String,
-            @ColumnInfo(name = "description")val noteDescriptor: String,
-            @ColumnInfo(name = "timestamp")val timestamp: String)
+data class Note (
+    @PrimaryKey(autoGenerate = true)
+    val id:Int,
+    val noteTitle:String,
+    val noteDescriptor: String,
+    val timestamp: String)
 
-{
-  @PrimaryKey(autoGenerate = true)
-  var id=0
-
-}

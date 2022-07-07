@@ -3,11 +3,12 @@ buildscript {
     ext.kotlin_version = "1.4.31"
     repositories {
         google()
-        mavenCentral()
+
+        jcenter()
     }
     dependencies {
 
-        classpath 'com.android.tools.build:gradle:4.0.1'
+        classpath 'com.android.tools.build:gradle:4.2.0'
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
 
 
@@ -19,8 +20,13 @@ buildscript {
 allprojects {
     repositories {
         google()
-        mavenCentral()
+
         jcenter() // Warning: this repository is going to shut down soon
+    }
+}
+configurations.all {
+    resolutionStrategy {
+        force "androidx.test:monitor:${rootProject.androidxTestRunner}"
     }
 }
 
